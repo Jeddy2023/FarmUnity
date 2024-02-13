@@ -14,6 +14,7 @@ export const createFarmLandCtrl = asyncHandler(async (req, res) => {
     } = req.body;
 
     const user = await User.findById(req.userAuth);
+    console.log(user)
 
     // myImages = req.files.map((file) => file.path);
 
@@ -55,7 +56,7 @@ export const getFarmLandCtrl = asyncHandler(async (req, res) => {
     });
 });
 
-export const getAllFarmLandCtrl  = asyncHandler(async (req, res) => {
+export const getAllFarmLandCtrl = asyncHandler(async (req, res) => {
     const farmLands = await FarmLand.find();
 
     res.json({
@@ -86,3 +87,42 @@ export const deleteFarmLandCtrl = asyncHandler(async (req, res) => {
         message: "Product deleted successfully",
     });
 })
+
+export const editFarmLandCtrl = asyncHandler(async (req, res) => {
+    const {
+        description,
+        size,
+        location,
+        price,
+        rentalterms,
+        images,
+        paymentSchedule
+    } = req.body;
+
+    const farmLandFound = await FarmLand.findById(req.params.id);
+
+    if (!farmLandFound) {
+        throw new Error("No prouduct with such an Id");
+    }
+    const farmLand = await FarmLand.findByIdAndUpdate(
+        req.params.id,
+        {
+            description,
+            size,
+            location,
+            price,
+            rentalterms,
+            images,
+            paymentSchedule
+        },
+        {
+            new: true,
+        }
+    );
+
+    res.json({
+        status: "success",
+        message: "Equipment edited successfully",
+        farmLand,
+    });
+});

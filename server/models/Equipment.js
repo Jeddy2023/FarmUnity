@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const EquipmentSchema = new schema({
-    name: { type: String, required: true },
+    name: { type: String, required: true }, 
     type: { type: String, required: true },
     specifications: { type: String, required: true },
     operatingInstructions: { type: String, required: true },
     safetyPrecautions: { type: String, required: true },
     maintenanceRequirements: { type: String, required: true },
-    rentalterms: { type: String },
+    rentalterms: { type: String, required: true },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
