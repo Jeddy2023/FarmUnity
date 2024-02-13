@@ -20,22 +20,34 @@ const UserSchema = new schema({
     },
     wishLists: [
         {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "WishList",
         },
 
     ],
     bookings: [
         {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Bookings",
         },
 
     ],
-    products: [
+    farmland: [
         {
-            type: mongoose.Schema.ObjectId,
-            ref: "Products",
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "FarmLand",
+        },
+    ],
+    equipment: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Equipment",
+        },
+    ],
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review",
         },
 
     ],

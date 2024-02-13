@@ -66,3 +66,14 @@ export const loginUserContrl = asyncHandler(async (req, res) => {
         res.status(401).json({ message: "Invalid email or password" });
     }
 })
+
+// Controller to get logged in user
+export const userProfile = asyncHandler(async (req, res) => {
+    const userFound = await User.findById(req.userAuth);
+
+    res.json({
+        status: "success",
+        message: "User profile fetched successfully",
+        userFound
+    });
+});
