@@ -6,7 +6,7 @@ import { createEquipmentCtrl, deleteEquipmentCtrl, editEquipmentCtrl, getAllEqui
 
 const equipmentRoutes = express.Router();
 
-equipmentRoutes.post("/", isLoggedIn, createEquipmentCtrl);
+equipmentRoutes.post("/", isLoggedIn, upload.array("files"), createEquipmentCtrl);
 equipmentRoutes.get("/:id", getEquipmentCtrl);
 equipmentRoutes.get("/", getAllEquipmentCtrl);
 equipmentRoutes.delete("/:id",isLoggedIn, deleteEquipmentCtrl);

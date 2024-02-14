@@ -2,10 +2,22 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const FarmLandSchema = new schema({
-    description: { type: String, required: true },
-    rentalterms: { type: String, required: true },
-    location: { type: String, required: true },
-    size: { type: Number, required: true },
+    description: {
+        type: String,
+        required: true
+    },
+    rentalterms: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        required: true
+    },
+    size: {
+        type: Number,
+        required: true
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -23,7 +35,7 @@ const FarmLandSchema = new schema({
     ],
     paymentSchedule: {
         type: String,
-        enum: ['Upfront', 'Monthly','Weekly','Open for Consideration'],
+        enum: ['Upfront', 'Monthly', 'Weekly', 'Open for Consideration'],
         default: 'Upfront'
     },
     reviews: [

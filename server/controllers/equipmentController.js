@@ -12,14 +12,15 @@ export const createEquipmentCtrl = asyncHandler(async (req, res) => {
         maintenanceRequirements,
         rentalterms,
         price,
-        paymentSchedule
+        paymentSchedule,
+        images
     } = req.body;
 
     const user = await User.findById(req.userAuth);
 
-    // myImages = req.files.map((file) => file.path);
+    const myImages = req.files.map((file) => file.path);
 
-    if (!name || !type || !paymentSchedule || !specifications || !price || !rentalterms || !operatingInstructions || !safetyPrecautions || !maintenanceRequirements) {
+    if (!name || !type || !paymentSchedule || !specifications || !price || !rentalterms || !operatingInstructions || !safetyPrecautions || !maintenanceRequirements ) {
         throw new Error(`All fields are required.`)
     }
 
@@ -33,7 +34,8 @@ export const createEquipmentCtrl = asyncHandler(async (req, res) => {
         maintenanceRequirements,
         rentalterms,
         price,
-        paymentSchedule
+        paymentSchedule,
+        images: myImages,
     });
 
     user.equipment.push(createEquipment._id);

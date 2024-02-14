@@ -14,12 +14,11 @@ export const createFarmLandCtrl = asyncHandler(async (req, res) => {
     } = req.body;
 
     const user = await User.findById(req.userAuth);
-    console.log(user)
 
-    // myImages = req.files.map((file) => file.path);
+    const myImages = req?.files.map((file) => file.path);
 
-    if (!location || !size || !paymentSchedule || !description || !price || !rentalterms) {
-        throw new Error(`Description, Location, size, price, rentalterms and payment schedule are required.`)
+    if (!location || !size || !paymentSchedule || !description || !price || !rentalterms ) {
+        throw new Error(`All fields are required.`)
     }
 
     const createFarmLand = await FarmLand.create({
@@ -29,7 +28,7 @@ export const createFarmLandCtrl = asyncHandler(async (req, res) => {
         location,
         price,
         rentalterms,
-        images,
+        images: myImages,
         paymentSchedule
     });
 

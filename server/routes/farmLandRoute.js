@@ -6,7 +6,7 @@ import upload from "../config/fileUpload.js";
 
 const farmLandRoutes = express.Router();
 
-farmLandRoutes.post("/", isLoggedIn, createFarmLandCtrl);
+farmLandRoutes.post("/", isLoggedIn, upload.array("files"), createFarmLandCtrl);
 farmLandRoutes.get("/:id", getFarmLandCtrl);
 farmLandRoutes.get("/", getAllFarmLandCtrl);
 farmLandRoutes.delete("/:id",isLoggedIn, deleteFarmLandCtrl);
