@@ -6,22 +6,22 @@ const ReviewSchema = new schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: [true, "Review must belong to a users"],
+    // required: [true, "Review must belong to a users"],
   },
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
-    required: [true, "Review must belong to a product"],
+    // required: [true, "Review must belong to a product"],
   },
   message: {
     type: String,
-    required: [true, "please add a message"],
+    // required: [true, "please add a message"],
   },
   rating: {
     type: Number,
-    required: [true, "please add a rating between 1 to 5"],
-    min: 1,
-    max: 5,
+    // required: [true, "please add a rating between 1 to 5"],
+    // min: 1,
+    // max: 5,
   },
 },
 
