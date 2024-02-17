@@ -69,7 +69,11 @@ export const loginUserContrl = asyncHandler(async (req, res) => {
 
 // Controller to get logged in user
 export const userProfile = asyncHandler(async (req, res) => {
-    const userFound = await User.findById(req.userAuth);
+    const userFound = await User.findById(req.userAuth).populate([
+        { path: "farmland" },
+        { path: "equipment" },
+        { path: "reviews" }
+    ]);
 
     res.json({
         status: "success",
